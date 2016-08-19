@@ -1,4 +1,4 @@
-# Projeto Loc8r exemplo do livro "MEAN Definitivo"
+# Projeto Loc8r exemplo do livro "MEAN Definitivo" (PROTOTIPO HTML)
 
 Aplicação com MongoDB, Nodejs, Express, AngularJs, listando redes estabelecimentos com wifi e sistema interativo de classificação
 
