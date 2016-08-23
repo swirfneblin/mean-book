@@ -11,6 +11,6 @@ sudo npm install -g express-generator
 - Heroku (https://intense-thicket-26081.herokuapp.com) 
 
 git remote add heroku git@heroku.com:intense-thicket-26081.git
-heroku git:remote -a intense-thicket-26081
+ heroku git:remote -a intense-thicket-26081
 
 git push heroku master
