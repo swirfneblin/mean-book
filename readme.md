@@ -6,7 +6,9 @@ Aplicação com MongoDB, Nodejs, Express, AngularJs, listando redes estabelecime
 - Heroku: https://toolbelt.heroku.com/
 - Bootstrap: http://getbootstrap.com/getting-started/#download
 
-sudo npm install -g express-generator
+Express 
+- sudo npm install -g express-generator
+- express (create project)
 
 Heroku (https://intense-thicket-26081.herokuapp.com) 
 
