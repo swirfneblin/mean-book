@@ -1,15 +1,5 @@
 var mongoose = require('mongoose');
 
-var locationSchema = new mongoose.Schema({ 
-	name: {type: String, required: true},
-	address: String,
-	rating: {type: Number, "default": 0, min: 0, max: 5},
-	facilities: [String],
-	coords: {type: [Number], index: '2dsphere'},
-	openingTimes: [openingTimeSchema],
-	reviews: [reviewSchema]
-});
-
 var openingTimeSchema = new mongoose.Schema({
 	days: {type: String, required: true},
 	opening: String,
@@ -24,4 +14,14 @@ var reviewSchema = new mongoose.Schema({
 	createdOn: {type: Date, "default": Date.now}
 });
 
-mongoose.model('Location', 'locationSchema');
+var locationSchema = new mongoose.Schema({ 
+	name: {type: String, required: true},
+	address: String,
+	rating: {type: Number, "default": 0, min: 0, max: 5},
+	facilities: [String],
+	coords: {type: [Number], index: '2dsphere'},
+	openingTimes: [openingTimeSchema],
+	reviews: [reviewSchema]
+});
+
+// mongoose.model('Location', 'locationSchema');
