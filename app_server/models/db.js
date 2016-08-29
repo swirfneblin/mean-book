@@ -51,6 +51,7 @@ process.on('SIGTERM', function(){
 	});
 });
 
+require('./locations');
 // var readline = require('readline');
 
 // if(process.plataform === "win32"){
