@@ -14,4 +14,7 @@ Heroku (https://intense-thicket-26081.herokuapp.com)
 
 - git remote add heroku git@heroku.com:intense-thicket-26081.git
 - heroku git:remote -a intense-thicket-26081
+- heroku local web
 - git push heroku master
+- heroku config:set NODE_ENV=production
+- heroku config:set MONGOLAB_URI=mongodb://<dbuser>:<dbpassword>@<dbserver>:<dbport>/loc8r

@@ -20,7 +20,8 @@ db.locations.save({
     }]
 })
 
-// db.locations.find().pretty()
+
+db.locations.find().select('name reviews').pretty()
 
 db.locations.update({
     name: 'Starcups' 
