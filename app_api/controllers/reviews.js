@@ -23,7 +23,7 @@ module.exports.reviewsReadOne = function(req, res) {
 				return;
 			}
 			if (location.reviews && location.reviews.length > 0) {
-				review = location.reviews.id(req.params.reviewid);
+				//review = location.reviews.id(req.params.reviewid);
 				if (!review) {
 					sendJSONresponse(res, 404, {
 						"message": "reviewid not found"
