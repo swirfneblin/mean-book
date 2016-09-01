@@ -1,12 +1,57 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
+var theEarth = (function(){
+	var earthRadius = 6371;
+	
+	var getDistanceFromRads = function(rads){
+		return parseFloat(rads * earthRadius);
+	};
+
+	var getRadsFromDistance = function(distance){
+		return parseFloat(distance / earthRadius);
+	};
+	return {
+		getDistanceFromRads: getDistanceFromRads,
+		getRadsFromDistance: getRadsFromDistance
+	};
+})();
+
 var sendJsonResponse = function(res, status, content){
 	res.status(status);
 	res.json(content);
 };
 
-module.exports.locationsListByDistance = function(req, res){ };
+module.exports.locationsListByDistance = function(req, res){ 
+	var lng = parseFloat(req.params.lng);
+	var lat = parseFloat(req.params.lat);
+	var point = {
+		type: "Point",
+		coordinates: [lng, lat]
+	};
+	
+	var geoOptions = {
+		spherical: true,
+		maxDistance: theEarth.getRadsFromDistance(req.params.maxDistance),
+		num: 10
+	};
+
+	Loc.geoNear(point, geoOptions, function(err, results, stats){
+		var locations = [];
+		console.log(results);
+		results.each(function(doc){
+			locations.push({
+				distance: theEarth.getDistanceFromRads(doc.dis),
+				name: doc.obj.name,
+				address: doc.obj.address,
+				rating: doc.obj.rating,
+				facilities: doc.obj.facilities,
+				_id:doc.obj._id
+			});
+		});
+		sendJsonResponse(res, 200, locations);
+	});
+};
 
 module.exports.locationsCreate = function(req, res){ 
 	sendJsonResponse(res, 200, {"status":"success"});
