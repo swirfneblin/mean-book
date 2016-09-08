@@ -1,11 +1,5 @@
 var mongoose = require('mongoose');
-var request = require('request');
-var apiOptions = {
-  server: "http://localhost:3000"
-};
-if(process.env.NODE_ENV === 'production'){
-  apiOptions.server = "https://intense-thicket-26081.herokuapp.com";
-}
+
 var Loc = mongoose.model('Location');
 
 var sendJSONresponse = function(res, status, content) {
@@ -79,6 +73,8 @@ var buildLocationList = function(req, res, results, stats) {
   });
   return locations;
 };
+
+
 
 /* GET a location by the id */
 module.exports.locationsReadOne = function(req, res) {
